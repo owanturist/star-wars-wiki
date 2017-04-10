@@ -1,7 +1,7 @@
 {
   "name": "star-wars-wiki",
   "version": "0.0.1",
-  "description": "Simple ELm App about Star Wars",
+  "description": "Simple Elm App about Star Wars",
   "main": "index.js",
   "repository": {},
   "author": "Anton Ovechkin <owanturist@gmail.com>",

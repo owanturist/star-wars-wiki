@@ -1,6 +1,6 @@
 {
     "version": "0.0.1",
-    "summary": "Simple ELm App about Star Wars",
+    "summary": "Simple Elm App about Star Wars",
     "repository": "https://github.com/user/project.git",
     "license": "MIT",
     "source-directories": [
