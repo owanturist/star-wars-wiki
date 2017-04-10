@@ -3,7 +3,10 @@
   "version": "0.0.1",
   "description": "Simple Elm App about Star Wars",
   "main": "index.js",
-  "repository": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/owanturist/star-wars-wiki.git"
+  },
   "author": "Anton Ovechkin <owanturist@gmail.com>",
   "license": "MIT",
   "scripts": {

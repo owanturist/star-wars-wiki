@@ -1,7 +1,7 @@
 {
     "version": "0.0.1",
     "summary": "Simple Elm App about Star Wars",
-    "repository": "https://github.com/user/project.git",
+    "repository": "https://github.com/owanturist/star-wars-wiki.git",
     "license": "MIT",
     "source-directories": [
         "./src/App"
