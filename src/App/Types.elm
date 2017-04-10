@@ -1,15 +1,18 @@
 module Types exposing (Msg(..), Model, initialModel)
 
+import Counter.Types
+
 
 type Msg
-    = Increment
-    | Decrement
+    = CounterMsg Counter.Types.Msg
 
 
 type alias Model =
-    Int
+    { counter : Counter.Types.Model
+    }
 
 
 initialModel : Model
 initialModel =
-    0
+    Model
+        Counter.Types.initialModel

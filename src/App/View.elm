@@ -1,18 +1,12 @@
 module View exposing (view)
 
-import Html exposing (Html, div, button, text)
-import Html.Events exposing (onClick)
+import Html exposing (Html, div)
 import Types exposing (Msg(..), Model)
+import Counter.View
 
 
 view : Model -> Html Msg
-view model =
+view { counter } =
     div []
-        [ button [ onClick Decrement ]
-            [ text "-"
-            ]
-        , text (toString model)
-        , button [ onClick Increment ]
-            [ text "+"
-            ]
+        [ Html.map CounterMsg <| Counter.View.view counter
         ]

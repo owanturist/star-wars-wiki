@@ -1,23 +1,31 @@
 module State exposing (initial, update, subscriptions)
 
 import Types exposing (Msg(..), Model)
+import Counter.State
 
 
 initial : Cmd Msg
 initial =
-    Cmd.none
+    Cmd.batch
+        [ Cmd.map CounterMsg Counter.State.initial
+        ]
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
-update msg model =
+update msg ({ counter } as model) =
     case msg of
-        Increment ->
-            ( model + 1, Cmd.none )
-
-        Decrement ->
-            ( model - 1, Cmd.none )
+        CounterMsg counterMsg ->
+            let
+                ( nextCounter, counterCmd ) =
+                    Counter.State.update counterMsg counter
+            in
+                ( { model | counter = nextCounter }
+                , Cmd.map CounterMsg counterCmd
+                )
 
 
 subscriptions : Model -> Sub Msg
-subscriptions =
-    always Sub.none
+subscriptions { counter } =
+    Sub.batch
+        [ Sub.map CounterMsg (Counter.State.subscriptions counter)
+        ]
