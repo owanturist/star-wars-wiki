@@ -1,18 +1,23 @@
-module Types exposing (Msg(..), Model, initialModel)
+module Types exposing (Msg(..), Model, initModel)
 
+import Routes exposing (Route, parseLocation)
 import Counter.Types
+import Navigation exposing (Location)
 
 
 type Msg
-    = CounterMsg Counter.Types.Msg
+    = OnLocationChange Location
+    | CounterMsg Counter.Types.Msg
 
 
 type alias Model =
     { counter : Counter.Types.Model
+    , route : Route
     }
 
 
-initialModel : Model
-initialModel =
+initModel : Location -> Model
+initModel =
     Model
         Counter.Types.initialModel
+        << parseLocation

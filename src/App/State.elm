@@ -1,19 +1,28 @@
-module State exposing (initial, update, subscriptions)
+module State exposing (init, update, subscriptions)
 
-import Types exposing (Msg(..), Model)
 import Counter.State
+import Navigation exposing (Location)
+import Routes exposing (parseLocation)
+import Types exposing (Model, Msg(..), initModel)
 
 
-initial : Cmd Msg
-initial =
-    Cmd.batch
+init : Location -> ( Model, Cmd Msg )
+init location =
+    ( initModel location
+    , Cmd.batch
         [ Cmd.map CounterMsg Counter.State.initial
         ]
+    )
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg ({ counter } as model) =
     case msg of
+        OnLocationChange location ->
+            ( { model | route = parseLocation location }
+            , Cmd.none
+            )
+
         CounterMsg counterMsg ->
             let
                 ( nextCounter, counterCmd ) =
