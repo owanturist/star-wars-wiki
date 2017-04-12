@@ -1,7 +1,8 @@
 module Main exposing (main)
 
 import Navigation
-import Types exposing (Msg(OnLocationChange), Model)
+import Types.Msg exposing (Msg(OnLocationChange))
+import Types.Model exposing (Model)
 import State exposing (init, update, subscriptions)
 import View exposing (view)
 

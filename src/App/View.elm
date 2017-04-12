@@ -1,7 +1,8 @@
 module View exposing (view)
 
 import Html exposing (Html, div, text)
-import Types exposing (Msg(..), Model)
+import Types.Msg exposing (Msg(..))
+import Types.Model exposing (Model)
 import Routes exposing (Route(..))
 import Counter.View
 

@@ -3,12 +3,13 @@ module State exposing (init, update, subscriptions)
 import Counter.State
 import Navigation exposing (Location)
 import Routes exposing (parseLocation)
-import Types exposing (Model, Msg(..), initModel)
+import Types.Msg exposing (Msg(..))
+import Types.Model exposing (Model, initModel)
 
 
 init : Location -> ( Model, Cmd Msg )
 init location =
-    ( initModel location
+    ( initModel (parseLocation location)
     , Cmd.batch
         [ Cmd.map CounterMsg Counter.State.initial
         ]
