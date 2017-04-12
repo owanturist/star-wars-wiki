@@ -4,6 +4,7 @@ import Html exposing (Html, div, text)
 import Types.Msg exposing (Msg(..))
 import Types.Model exposing (Model)
 import Routes exposing (Route(..))
+import Homepage.View
 import Counter.View
 
 
@@ -11,7 +12,7 @@ view : Model -> Html Msg
 view { route, ui } =
     case route of
         Homepage ->
-            div [] [ text "It is homepage" ]
+            Homepage.View.view
 
         Counter ->
             div []
