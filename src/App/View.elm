@@ -8,14 +8,14 @@ import Counter.View
 
 
 view : Model -> Html Msg
-view { route, counter } =
+view { route, ui } =
     case route of
         Homepage ->
             div [] [ text "It is homepage" ]
 
         Counter ->
             div []
-                [ Html.map CounterMsg <| Counter.View.view counter
+                [ Html.map CounterMsg <| Counter.View.view ui.counter
                 ]
 
         NotFound ->

@@ -17,7 +17,7 @@ init location =
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
-update msg ({ counter } as model) =
+update msg ({ ui } as model) =
     case msg of
         OnLocationChange location ->
             ( { model | route = parseLocation location }
@@ -27,15 +27,18 @@ update msg ({ counter } as model) =
         CounterMsg counterMsg ->
             let
                 ( nextCounter, counterCmd ) =
-                    Counter.State.update counterMsg counter
+                    Counter.State.update counterMsg ui.counter
+
+                nextUI =
+                    { ui | counter = nextCounter }
             in
-                ( { model | counter = nextCounter }
+                ( { model | ui = nextUI }
                 , Cmd.map CounterMsg counterCmd
                 )
 
 
 subscriptions : Model -> Sub Msg
-subscriptions { counter } =
+subscriptions { ui } =
     Sub.batch
-        [ Sub.map CounterMsg (Counter.State.subscriptions counter)
+        [ Sub.map CounterMsg (Counter.State.subscriptions ui.counter)
         ]

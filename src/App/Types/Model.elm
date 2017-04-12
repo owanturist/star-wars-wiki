@@ -1,11 +1,11 @@
 module Types.Model exposing (Model, initModel)
 
 import Routes exposing (Route)
-import Counter.Types
+import Types.UI exposing (UI, initialUI)
 
 
 type alias Model =
-    { counter : Counter.Types.Model
+    { ui : UI
     , route : Route
     }
 
@@ -13,4 +13,4 @@ type alias Model =
 initModel : Route -> Model
 initModel =
     Model
-        Counter.Types.initialModel
+        initialUI
